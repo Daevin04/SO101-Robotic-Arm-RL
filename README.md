@@ -251,7 +251,7 @@ If you use this work in your research, please cite:
 
 ## Contact
 
-For questions or collaboration opportunities, please open an issue or contact [your.email@example.com](mailto:your.email@example.com).
+For questions or collaboration opportunities, please open an issue or contact oeyd@vcu.edu
 
 ---
 
