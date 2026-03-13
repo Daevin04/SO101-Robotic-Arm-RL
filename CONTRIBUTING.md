@@ -1,102 +1,26 @@
-# Contributing to SO-101 Robotic Arm RL
+# About This Project
 
-Thank you for your interest in contributing to this project! This document provides guidelines for contributing.
+This is a personal research and portfolio project. It is not actively seeking external contributions.
 
-## How to Contribute
+If you are a recruiter, employer, or fellow engineer exploring the codebase, feel free to:
 
-### Reporting Bugs
+- Browse the code and documentation
+- Open an issue if you spot a bug or have a question
+- Reach out directly via GitHub if you want to discuss the work
 
-If you find a bug, please open an issue with:
-- A clear, descriptive title
-- Steps to reproduce the bug
-- Expected behavior
-- Actual behavior
-- Your environment (Python version, OS, etc.)
+## Running It Yourself
 
-### Suggesting Enhancements
+If you want to experiment with the training pipeline locally:
 
-Enhancement suggestions are welcome! Please open an issue with:
-- A clear description of the enhancement
-- Why it would be useful
-- Any implementation ideas you have
-
-### Pull Requests
-
-1. **Fork the repository** and create your branch from `main`
-2. **Make your changes** with clear, descriptive commits
-3. **Test your changes** thoroughly
-4. **Update documentation** if needed
-5. **Submit a pull request**
-
-#### Pull Request Guidelines
-
-- Follow the existing code style
-- Write clear commit messages
-- Include tests if applicable
-- Update README.md if adding new features
-- Keep PRs focused on a single feature/fix
-
-## Development Setup
-
-1. Clone your fork:
 ```bash
-git clone https://github.com/yourusername/SO101-Robotic-Arm-RL.git
+git clone https://github.com/Daevin04/SO101-Robotic-Arm-RL.git
 cd SO101-Robotic-Arm-RL
-```
-
-2. Create a virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. Install in development mode:
-```bash
 pip install -r requirements.txt
-pip install -e .
+python scripts/train.py --stage 1 --timesteps 25000
 ```
 
-4. Create a branch:
-```bash
-git checkout -b feature/your-feature-name
-```
-
-## Code Style
-
-- Follow PEP 8 guidelines
-- Use meaningful variable and function names
-- Add docstrings to classes and functions
-- Keep functions focused and concise
-
-## Testing
-
-Before submitting a PR:
-- Test your changes locally
-- Run training for at least 1000 steps to verify no errors
-- Test with multiple random seeds if applicable
-
-## Adding New Training Stages
-
-When adding a new training stage:
-
-1. Create a new environment file: `envs/stage_X_task.py`
-2. Inherit from `SO101BaseEnv`
-3. Implement the reward function
-4. Add clear documentation in the docstring
-5. Update `ENV_MAP` in `scripts/train.py` and `scripts/evaluate.py`
-6. Add documentation in `docs/`
-
-## Documentation
-
-- Update README.md for new features
-- Add detailed docstrings
-- Create documentation in `docs/` for complex features
-- Include examples in docstrings
-
-## Questions?
-
-Feel free to open an issue for any questions about contributing!
+See [docs/QUICK_START.md](docs/QUICK_START.md) for full setup instructions.
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the MIT License.
+This project is licensed under the MIT License. You are free to use, fork, or adapt the code with attribution.
