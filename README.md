@@ -18,6 +18,17 @@ This project implements a **curriculum learning approach** to train a simulated 
 
 Each stage builds on the previous one, allowing for faster convergence and more reliable learning compared to end-to-end training.
 
+## Demo Videos
+
+Watch the trained agent in action:
+
+- **[Grasping Demo](videos/demo_stage6_grasping.mp4)** - Stage 6 grasping behavior
+- **[Analysis Demo](videos/demo_stage6_analysis.mp4)** - Performance evaluation
+- **[Pusher Task](videos/demo_pusher_task.mp4)** - Object pushing strategy
+- **[Advanced Pushing](videos/demo_pusher_learning.mp4)** - Refined manipulation
+
+See [videos/README.md](videos/README.md) for more details.
+
 ## Key Features
 
 - **Stage-based curriculum learning**: Progressive skill acquisition from simple to complex

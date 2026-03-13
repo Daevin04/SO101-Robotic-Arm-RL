@@ -32,7 +32,9 @@ logs/**/*.jsonl
 tensorboard_logs/
 !tensorboard_logs/.gitkeep
 videos/**/*.mp4
+!videos/demo_*.mp4
 !videos/.gitkeep
+!videos/README.md
 
 # IDE
 .vscode/
