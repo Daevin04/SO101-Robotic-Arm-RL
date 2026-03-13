@@ -1,14 +1,11 @@
 """
 STAGE 7: UR5 Sparse Reward Implementation (MODIFIED - Z-axis + Auto-Grasp)
 
-STATUS: 🆕 NEW STAGE (Hybrid Sparse+Dense Rewards - UR5 Approach)
+STATUS: ✅ IMPLEMENTED
 Date Started: 2026-01-30
 Updated: 2026-01-31 (Added Z-axis weighting + automatic grasping)
-Best Checkpoint: TBD
-Success Rate: TBD
 Target: 1M+ steps
 Resume From: None (train from scratch)
-Next Stage: TBD
 
 ================================================================================
 COMPARISON STUDY: Dense (Stage 6) vs Sparse (Stage 7) Rewards

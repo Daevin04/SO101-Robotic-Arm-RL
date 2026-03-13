@@ -1,13 +1,11 @@
 """
 STAGE 6: Gated Curriculum - Grasp Then Navigate
 
-STATUS: 🆕 GATED CURRICULUM (Two-Stage Learning)
+STATUS: ✅ IMPLEMENTED
 Date Started: 2026-02-10
-Best Checkpoint: None yet
-Success Rate: TBD
 Target: 150K+ steps
 Resume From: checkpoints/stage_5/stage_5_task_XXXXX_steps.zip
-Next Stage: TBD
+Next Stage: Stage 7
 
 ================================================================================
 GATED CURRICULUM: TWO-STAGE LEARNING

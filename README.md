@@ -81,7 +81,7 @@ SO101-Robotic-Arm-RL/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/SO101-Robotic-Arm-RL.git
+git clone https://github.com/Daevin04/SO101-Robotic-Arm-RL.git
 cd SO101-Robotic-Arm-RL
 ```
 
@@ -239,7 +239,7 @@ If you use this work in your research, please cite:
   title = {SO-101 Robotic Arm: Curriculum Learning for Grasping},
   year = {2026},
   publisher = {GitHub},
-  url = {https://github.com/yourusername/SO101-Robotic-Arm-RL}
+  url = {https://github.com/Daevin04/SO101-Robotic-Arm-RL}
 }
 ```
 
@@ -251,7 +251,7 @@ If you use this work in your research, please cite:
 
 ## Contact
 
-For questions or collaboration opportunities, please open an issue or contact oeyd@vcu.edu
+For questions or collaboration opportunities, feel free to open an issue on GitHub.
 
 ---
 

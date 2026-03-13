@@ -11,12 +11,12 @@ with open("requirements.txt", "r", encoding="utf-8") as fh:
 setup(
     name="so101-robotic-arm-rl",
     version="0.1.0",
-    author="Your Name",
-    author_email="your.email@example.com",
+    author="Daevin04",
+    author_email="",
     description="Curriculum learning for robotic arm grasping with reinforcement learning",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/SO101-Robotic-Arm-RL",
+    url="https://github.com/Daevin04/SO101-Robotic-Arm-RL",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 3 - Alpha",

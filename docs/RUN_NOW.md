@@ -1,200 +1,102 @@
-# 🚀 RUN TRAINING NOW (You're already on VCU!)
+# GPU Training Guide
 
-You're on: `egr-s-26-604-1.rams.adp.vcu.edu` with **NVIDIA L4 GPU**
-All dependencies: ✅ Installed
-
----
-
-## Quick Start (Choose One)
-
-### Option 1: Dense Rewards Training (RECOMMENDED - 2-4 hours)
-
-```bash
-./run_dense_training.sh
-```
-
-**What this does:**
-- Trains with dense distance-based rewards
-- Uses 2026 best practices (LR=1e-4, Buffer=500k)
-- Expected success rate: 40-60% @ 50k steps
-- Time: ~2-4 hours on your L4 GPU
-
-### Option 2: Full Hyperparameter Sweep (12-24 hours)
-
-```bash
-# Run in background
-nohup ./run_hyperparam_sweep_direct.sh > sweep.log 2>&1 &
-
-# Check progress
-tail -f sweep.log
-```
-
-**What this does:**
-- Tests 12 different configurations
-- Compares sparse vs dense rewards
-- Finds optimal hyperparameters
-- Time: ~12-24 hours total
+This guide covers running training on a GPU-accelerated machine or remote cluster.
 
 ---
 
-## Monitoring Training
+## Prerequisites
 
-### While training runs:
-
-```bash
-# Watch logs in real-time
-tail -f logs/dense_training.log
-
-# Check GPU usage
-watch -n 1 nvidia-smi
-
-# Kill if needed
-pkill -f train_stage_2c_dense.py
-```
-
-### After training completes:
-
-```bash
-# Evaluate performance
-python scripts/evaluate.py --checkpoint checkpoints/dense_training/final.zip
-
-# Watch trained policy
-python scripts/watch.py --checkpoint checkpoints/dense_training/final.zip
-
-# Analyze sweep results (if you ran sweep)
-python cluster/analyze_sweep.py
-```
+- NVIDIA GPU with CUDA support (8GB+ VRAM recommended)
+- MuJoCo headless rendering configured (`MUJOCO_GL=egl` for Linux servers)
+- Dependencies installed: `pip install -r requirements.txt`
 
 ---
 
-## Why Dense Rewards?
+## Recommended: Dense Reward Training
 
-Your current sparse rewards give **0 reward** until the arm touches the cube (within 3cm).
+Dense rewards provide a gradient at every distance from the target, dramatically speeding up early training compared to sparse rewards.
 
-**Problem:** In 6-DOF space, this could take thousands of random steps to discover!
+```bash
+python scripts/train.py --stage 2 --timesteps 50000 --reward-type dense
+```
 
-**Solution:** Dense rewards provide gradient at ANY distance:
+**Why dense rewards?**
+
+Sparse rewards give zero signal until the arm is within 3 cm of the target. In a 6-DOF space, random exploration may take thousands of steps to discover this region.
+
+Dense rewards signal progress at any distance:
 
 ```
 Distance | Sparse | Dense | Total
 ---------|--------|-------|------
-50cm     | 0      | 4.4   | 4.4   ← Agent knows it's far
-30cm     | 0      | 8.2   | 8.2   ← Getting closer!
-10cm     | 0      | 12.9  | 12.9  ← Almost there!
-2cm      | 60     | 13.9  | 73.9  ← Contact! Big reward!
+50 cm    | 0      | 4.4   | 4.4
+30 cm    | 0      | 8.2   | 8.2
+10 cm    | 0      | 12.9  | 12.9
+2 cm     | 60     | 13.9  | 73.9   ← Contact reward
 ```
 
-The dense reward **guides exploration**, while sparse rewards **signal success**.
+---
+
+## Full Hyperparameter Sweep (Optional)
+
+To compare reward structures and find optimal hyperparameters:
+
+```bash
+# Run in background on a remote server
+nohup python scripts/train.py --stage 2 --timesteps 150000 > logs/sweep.log 2>&1 &
+
+# Monitor progress
+tail -f logs/sweep.log
+```
 
 ---
 
 ## Expected Results
 
-| Reward Type | Success @ 50k | Training Time |
-|-------------|---------------|---------------|
-| Sparse (old) | 0-10% | ~2 hours |
-| Dense (new) | 40-60% | ~2-4 hours |
+| Reward Type | Success @ 50k steps | Approx. Training Time (L4/A100) |
+|-------------|---------------------|--------------------------------|
+| Sparse      | 0–10%               | ~2 hours                       |
+| Dense       | 40–60%              | ~2–4 hours                     |
 
 ---
 
-## Your Current Environment
-
-- **GPU:** NVIDIA L4 (23GB VRAM) ✅
-- **Python:** 3.13.5 ✅
-- **Libraries:** stable-baselines3, mujoco, gymnasium ✅
-- **Rendering:** Set to `MUJOCO_GL=egl` (headless) ✅
-
----
-
-## What Happens Next?
-
-### After ~2 hours (dense training):
-
-1. **Check success rate** in final logs
-2. **If >40% success:** Great! Use this model
-3. **If <40% success:** Try sweep to find better hyperparameters
-
-### After ~24 hours (full sweep):
-
-1. Run: `python cluster/analyze_sweep.py`
-2. Find best configuration
-3. Use that config for longer training
-
----
-
-## Quick Commands
+## Monitoring
 
 ```bash
-# START dense training
-./run_dense_training.sh
+# Live log output
+tail -f logs/training.log
 
-# START sweep (in background)
-nohup ./run_hyperparam_sweep_direct.sh > sweep.log 2>&1 &
+# GPU utilization
+watch -n 1 nvidia-smi
 
-# MONITOR progress
-tail -f logs/dense_training.log
-tail -f sweep.log
-
-# CHECK GPU
-nvidia-smi
-
-# ANALYZE results
-python cluster/analyze_sweep.py
-
-# EVALUATE model
-python scripts/evaluate.py --checkpoint checkpoints/dense_training/final.zip
-
-# WATCH policy
-python scripts/watch.py --checkpoint checkpoints/dense_training/final.zip
+# TensorBoard
+tensorboard --logdir logs/
 ```
 
 ---
 
-## Troubleshooting
+## Headless Rendering (Linux Servers)
 
-### "CUDA out of memory"
+Set MuJoCo to use EGL for headless GPU rendering:
+
 ```bash
-# Reduce batch size in the script
-# Edit: run_dense_training.sh
-# Change: --batch-size 128  # Instead of 256
-```
-
-### "Process killed"
-```bash
-# Check if another process is using GPU
-nvidia-smi
-pkill -f train_stage
-```
-
-### Want to stop training?
-```bash
-# Find process
-ps aux | grep train_stage
-
-# Kill it
-pkill -f train_stage_2c_dense.py
+export MUJOCO_GL=egl
+python scripts/train.py --stage 1 --timesteps 25000
 ```
 
 ---
 
-## 💡 My Recommendation
-
-**START NOW with dense training:**
+## After Training
 
 ```bash
-./run_dense_training.sh
+# Evaluate a saved checkpoint
+python scripts/evaluate.py \
+  --model checkpoints/stage_2/stage_2_task_50000_steps.zip \
+  --env stage_2 \
+  --n-episodes 100
+
+# Visualize the trained policy
+python scripts/watch.py \
+  --model checkpoints/stage_2/stage_2_task_50000_steps.zip \
+  --env stage_2
 ```
-
-Then grab coffee for 2-4 hours.
-
-If results are good (>40% success), you're done!
-If not, run the full sweep overnight.
-
----
-
-**Ready? Run:**
-```bash
-./run_dense_training.sh
-```
-
-Good luck! 🚀

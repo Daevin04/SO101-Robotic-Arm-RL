@@ -120,4 +120,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 **Note**: This project is under active development. Version 1.0.0 will be released after thorough testing on physical hardware and community feedback.
 
-For detailed commit history, see the [Git log](https://github.com/yourusername/SO101-Robotic-Arm-RL/commits).
+For detailed commit history, see the [Git log](https://github.com/Daevin04/SO101-Robotic-Arm-RL/commits).
