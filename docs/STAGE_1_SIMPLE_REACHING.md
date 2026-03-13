@@ -94,7 +94,7 @@ Target at 25K: >75% success rate
 ## Training Command
 
 ```bash
-cd /home/oeyd/SO101_Training
+cd SO101-Robotic-Arm-RL
 
 # Start training (25K steps = ~45 minutes)
 python scripts/train.py --total-timesteps 25000

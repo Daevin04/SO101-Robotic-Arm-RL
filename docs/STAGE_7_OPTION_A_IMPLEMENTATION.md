@@ -181,21 +181,18 @@ Step 90: reward = -1.40, distance = 0.1403m (farther)
 
 ## Files Modified
 
-1. **`/home/oeyd/SO101_Training/envs/stage_7_task.py`**
+1. **`envs/stage_7_task.py`**
    - Changed distance calculation: 3D cube-to-goal → 2D end-effector-to-cube
    - Updated success condition: cube lifted → end-effector positioned + grasping
    - Removed goal position (cube itself is the target)
    - Updated reward calculation to use distance_to_target
 
-2. **`/home/oeyd/SO101_Training/scripts/evaluate_stage7.py`**
+2. **`scripts/evaluate.py`**
    - Updated metric names: distance_to_goal → distance_to_target
    - Updated plot labels to reflect 2D distance measurement
+   - Added Stage 7 to environment map and registration
 
-3. **`/home/oeyd/SO101_Training/scripts/evaluate.py`**
-   - Added Stage 7 to environment map
-   - Added Stage 7 import and registration
-
-4. **`/home/oeyd/SO101_Training/scripts/train.py`**
+3. **`scripts/train.py`**
    - Increased early stopping patience for Stage 7 (100K episodes)
    - Sparse rewards need longer exploration phase
 

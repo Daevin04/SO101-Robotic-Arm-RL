@@ -80,7 +80,7 @@ Update this header to:
 
 ### Start Training
 ```bash
-cd /home/oeyd/SO101_Training
+cd SO101-Robotic-Arm-RL
 python scripts/train.py --total-timesteps 300000
 ```
 
@@ -216,7 +216,7 @@ Stage 3: Visual Servoing (Camera-based)
 ## Testing
 
 ```bash
-cd /home/oeyd/SO101_Training
+cd SO101-Robotic-Arm-RL
 
 # Test import
 python -c "from envs.stage_1_task import Stage1Task; print('✅ Import successful')"

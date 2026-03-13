@@ -59,14 +59,14 @@ obs = [
 ## Files Modified
 
 **Both directories updated:**
-1. ✅ `/home/oeyd/SO101_Training/envs/so101_base_env.py`
+1. ✅ `envs/so101_base_env.py`
    - Line 74-78: Observation space 30D → 29D
    - Line 110-128: Removed grasped flag from observation
 
-2. ✅ `/home/oeyd/SO101_Pusher/envs/so101_base_env.py`
+2. ✅ `envs/so101_base_env.py` (pusher variant)
    - Same changes as above
 
-3. ✅ `/home/oeyd/SO101_Training/envs/__init__.py`
+3. ✅ `envs/__init__.py`
    - Removed unused imports
 
 ---
@@ -116,7 +116,7 @@ obs = [
 ## Testing
 
 ```bash
-cd /home/oeyd/SO101_Training
+cd SO101-Robotic-Arm-RL
 python -c "
 from envs.so101_positioning_grasp_prep_env import SO101PositioningGraspPrepEnv
 env = SO101PositioningGraspPrepEnv()

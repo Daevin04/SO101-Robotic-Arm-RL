@@ -396,7 +396,7 @@ python scripts/test_stage7_hover_descent.py
 
 ## Implementation Files
 
-**Core:** `/home/oeyd/SO101_Training/envs/stage_7_task.py`
+**Core:** `envs/stage_7_task.py`
 - `step()` method: Checks `scripted_phase_active` FIRST
 - `_execute_scripted_descent()`: Returns 0.0 reward for phases 1-3
 

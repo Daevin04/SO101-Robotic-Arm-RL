@@ -140,6 +140,6 @@ checkpoints/
 **Ready to start!** 🚀
 
 ```bash
-cd /home/oeyd/SO101_Training
+cd SO101-Robotic-Arm-RL
 python scripts/train.py --total-timesteps 25000
 ```

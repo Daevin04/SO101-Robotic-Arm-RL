@@ -95,7 +95,7 @@ Expected mastery (>70%): 1M-1.5M steps
 
 ### Enable/Disable Auto-Grasp
 
-**File:** `/home/oeyd/SO101_Training/envs/stage_7_task.py`
+**File:** `envs/stage_7_task.py`
 
 **Line ~148:**
 ```python

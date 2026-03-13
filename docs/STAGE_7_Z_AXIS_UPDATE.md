@@ -294,7 +294,7 @@ distance = sqrt(0.0953² + (0.5 * 0.1151)²)
 
 ### Code Location
 
-**Modified file:** `/home/oeyd/SO101_Training/envs/stage_7_task.py`
+**Modified file:** `envs/stage_7_task.py`
 
 **Modified method:** `_compute_reward()` (lines ~180-220)
 

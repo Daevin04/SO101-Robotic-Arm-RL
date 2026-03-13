@@ -13,7 +13,7 @@ Fast iteration training using 25K-step stages with >75% success milestones.
 ### 1. Setup Environment
 
 ```bash
-cd /home/oeyd/SO101_Training
+cd SO101-Robotic-Arm-RL
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
