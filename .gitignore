@@ -1,0 +1,69 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Training artifacts
+checkpoints/**/*.zip
+!checkpoints/.gitkeep
+logs/**/*.csv
+logs/**/*.jsonl
+!logs/.gitkeep
+tensorboard_logs/
+!tensorboard_logs/.gitkeep
+videos/**/*.mp4
+!videos/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# MuJoCo
+*.mjb
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Model files (keep structure, ignore large trained models)
+*.zip
+*.pkl
+*.pth
+
+# Logs
+*.log
+*.out
+*.err
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Environment variables
+.env
+.env.local
